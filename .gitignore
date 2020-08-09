@@ -1,0 +1,17 @@
+# Build files
+/build
+*.luac
+*.love
+*.zip
+*.appimage
+*.AppImage
+*.x86_64
+*.exe
+*.app
+# Runtime libraries
+*.so
+*.dll
+# Editor temp files
+/.vscode
+*~
+*.gch
