@@ -29,26 +29,39 @@
   </head>
   <body>
     <h1>How many more days until TikTok is banned?<span class=star>*</span></h1>
-    <div class=time-container><span id=days>?</span><br /><span>days</span></div>
-    <div class=time-container><span id=hours>?</span><br /><span>hours</span></div>
-    <div class=time-container><span id=minutes>?</span><br /><span>minutes</span></div>
-    <div class=time-container><span id=seconds>?</span><br /><span>seconds</span></div>
+    <div class=time-container><span id=days>?</span><br /><span id=days-label>days</span></div>
+    <div class=time-container><span id=hours>?</span><br /><span id=hours-label>hours</span></div>
+    <div class=time-container><span id=minutes>?</span><br /><span id=minutes-label>minutes</span></div>
+    <div class=time-container><span id=seconds>?</span><br /><span id=seconds-label>seconds</span></div>
     <footer>
       *in the United States of America ·
       Made by <a href="https://github.com/BEN1JEN">BEN1JEN</a>
-      and <a href="https://github.com/Saweron">Saweron</a>
+      and <a href="https://github.com/Saweron">Saweron</a> ·
+      Source available on <a href="https://github.com/BEN1JEN/howmanymoredaysuntiltiktokisbanned/">Github</a>
     </footer>
     <script>
       const days = document.getElementById("days");
       const hours = document.getElementById("hours");
       const minutes = document.getElementById("minutes");
       const seconds = document.getElementById("seconds");
+      const daysLabel = document.getElementById("days-label");
+      const hoursLabel = document.getElementById("hours-label");
+      const minutesLabel = document.getElementById("minutes-label");
+      const secondsLabel = document.getElementById("seconds-label");
       function updateDisplay() {
         const time = 1600646400 - new Date().getTime()/1000;
-        days.innerText = Math.floor(time/60/60/24);
-        hours.innerText = Math.floor(time/60/60%24);
-        minutes.innerText = Math.floor(time/60%60);
-        seconds.innerText = Math.floor(time%60);
+        const dayCount = Math.floor(time/60/60/24);
+        const hourCount = Math.floor(time/60/60%24);
+        const minuteCount = Math.floor(time/60%60);
+        const secondCount = Math.floor(time%60);
+        days.innerText = dayCount.toString();
+        hours.innerText = hourCount.toString();
+        minutes.innerText = minuteCount.toString();
+        seconds.innerText = secondCount.toString();
+        daysLabel.innerText = dayCount === 1 ? "day" : "days";
+        hoursLabel.innerText = hourCount === 1 ? "hour" : "hours";
+        minutesLabel.innerText = minuteCount === 1 ? "minute" : "minutes";
+        secondsLabel.innerText = secondCount === 1 ? "second" : "seconds";
       }
       setInterval(updateDisplay, 1000);
       updateDisplay();
